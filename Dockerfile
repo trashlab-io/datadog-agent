@@ -1,4 +1,4 @@
-FROM datadog/agent:7
+FROM gcr.io/datadoghq/agent:7
 
 # disable autoconfigured checks; DD container checks
 # do not work as-is on Render since there's no access
@@ -17,5 +17,7 @@ ENV DD_PROCESS_AGENT_ENABLED=true
 # Automatically set by Render
 ARG RENDER_SERVICE_NAME=datadog
 
+ENV DD_API_KEY=$DD_API_KEY
+ENV DD_SITE=datadoghq.com
 ENV DD_BIND_HOST=$RENDER_SERVICE_NAME
 ENV DD_HOSTNAME=$RENDER_SERVICE_NAME
